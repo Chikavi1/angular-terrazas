@@ -1,0 +1,268 @@
+
+<body>
+    
+    <div class="grid grid-cols-12">
+        <div class="col-span-12 md:col-span-8  relative">
+            <a href="/index">
+                <img class="absolute top-8 left-12 w-16 h-auto" src="https://marketplace.canva.com/EAF_kKofwOc/1/0/1600w/canva-logo-circular-asesor-fiscal-profesional-simple-azul-ZkgIyWYuaIk.jpg" alt="Logo">
+            </a>
+            
+            <!-- Botón en la esquina superior derecha -->
+            <button (click)="shareOnWhatsApp()" class="absolute top-8 right-4 bg-white text-green-700 w-12 h-12 rounded-full shadow-md">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+
+            <img  class="w-full md:h-screen object-cover" [src]="slides[currentIndex].image" alt="">
+
+            <button (click)="prevSlide()"
+                class="absolute left-4 top-1/2 transform -translate-y-2/2 bg-white p-2  w-12 h-12 rounded-full shadow-md ml-4">
+                &#10094;
+            </button>
+            <button (click)="nextSlide()"
+                class="absolute right-4 top-1/2 transform -translate-y-2/2 bg-white p-2 w-12 h-12 rounded-full shadow-md mr-4">
+                &#10095;
+            </button>
+
+        <div class="grid grid-cols-12 -mt-20 hidden md:grid"   *ngIf="!isButtonVisible">
+            <div class="col-span-3 col-start-10 bg-green-900 text-white rounded-xl text-center  p-4 mr-4 border-2 border-green-800">
+                <a href="/checkout">Aparta con $ 200 MXN  </a>
+            </div>
+        </div>
+
+
+        </div>
+        <div class="col-span-12 md:col-span-4 overflow-y-auto max-h-screen p-2 md:p-6">
+            <!-- contenido -->
+            <div class="p-2 md:p-12">
+            <h2 class="text-4xl  ">
+                La terraza de Lupita
+                <i class="fa-solid fa-circle-check text-green-700 ml-2 fa-xs"></i>
+            </h2>
+                <p class="text-lg text-gray-600"> <i class="fa-solid fa-location-dot"></i> Terraza en Guadalajara</p>
+                <p class="mt-6 text-gray-500">Bienvenido a Nomads Hotel, Hostel & Rooftop pool! un nuevo estandar en hospedaje el cual se caracteriza por contar con
+                un increible rooftop bar con piscina, camastros y una acogedora area comun con vista al centro de la ciudad donde podras
+                disfrutar del atardecer rodeado de personas de todo el mundo acompanandote de todas las amenidades que como viajero
+                pudieses desear! No olvides guardar energia para nuestros eventos sociales organizados! Somo un hostel social y de
+                fiesa!</p>
+            </div>
+            
+
+             <mat-card class="demo-inline-calendar-card mx-auto">
+                <mat-calendar [(selected)]="selected" [dateFilter]="filtrarFechas"></mat-calendar>
+            </mat-card>
+
+            <div class="p-2 md:p-12  grid grid-cols-12">
+                <div class="col-span-6">
+                    <!-- <h2 class="text-3xl font-bold ">Precios</h2> -->
+                    <p class="text-green-800 font-bold">Desde los $ 2,900 MXN</p>
+                    <p class="text-gray-600">Dependiendo del dia</p>
+                </div>
+                <div class="col-span-6">
+                    <a href="/checkout">
+                        <p  class="bg-green-800 text-white p-4 rounded-xl w-full text-center" #originalButton>
+                           Reservar
+                        </p>
+                    </a>
+                    </div>
+            </div>
+
+            <div class="p-2 md:p-12">
+                <div class="grid grid-cols-12 text-center">
+                    <div class="md:col-span-4 col-span-12 ">
+                        <i class="fa-solid fa-location-dot text-3xl text-[#a6988d]"></i>
+                        <!-- <p>Alberga</p> -->
+                        <h2 class="text-md font-bold text-gray-600 ">26 personas</h2>
+ 
+                    </div>
+                    <div class="md:col-span-4 col-span-12">
+                        <!-- <p>Duración</p> -->
+                        <i class="fa-regular fa-clock text-3xl text-[#a6988d]"></i>
+                        <h2 class="text-md font-bold text-gray-600 ">Desde 8 horas</h2>
+                    </div>
+                    <div class="md:col-span-4 col-span-12">
+                        <!-- <p>Cuenta </p> -->
+                        <i class="fa-solid fa-bed text-3xl text-[#a6988d]"></i>
+                        <h2 class="text-md font-bold text-gray-600 ">Con hospedaje</h2>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="border-t border-gray-200 border-2 "></div>
+
+
+            <div class="p-6">
+                <h2 class="text-2xl my-2">Que ofrece este lugar</h2>
+
+                <p class="text-xl" *ngFor="let item of terrace.amenities">
+                    <i class=" w-8 h-8 text-center text-gray-600  rounded-full bg-gray-100 fa-solid " [ngClass]="item.icon"></i> 
+                    {{item.name}}
+                </p>
+                
+            
+            </div>
+                        <div class="border-t border-gray-200 border-2 "></div>
+
+            
+            <h2 class="text-2xl m-4">Lugar</h2>
+            <div id="map"   style="height: 500px;width: 100%;"></div>
+
+
+                        <div class="border-t border-gray-200 border-2 mt-6"></div>
+
+         
+            
+            
+
+            <h2 class="text-2xl m-4 font-bold mt-12">Conoce al dueño de la terraza</h2>
+            <div class="p-12">
+                <div class="grid grid-cols-12 ">
+                    <div class="col-span-2">
+                        <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                        class="w-20 h-20 rounded-full object-cover"   alt="">
+                    </div>
+                    <div class="col-span-6">
+                        <h2 class="text-2xl m-4 font-bold">Araceli Hernandez</h2>
+                    </div>
+                </div>
+
+                <p class="mt-8">Araceli es un amante de la naturaleza y el deporte</p>
+                <p>2 años de experiencia</p>
+
+                <h2 class="mt-8 text-2xl   my-8 font-bold"><i class="fa-solid fa-star"></i> Reseñas</h2>
+                <p>4.85 . 12 evaluaciones</p>
+
+                
+<div class="flex items-center mb-5">
+    <p
+        class="bg-green-100 text-green-800 text-sm font-semibold inline-flex items-center p-1.5 rounded-sm dark:bg-green-200 dark:text-green-800">
+        8.7</p>
+    <p class="ms-2 font-medium text-gray-900 text-[#14532d]">Excelente</p>
+    <span class="w-1 h-1 mx-2 bg-[#14532d] rounded-full dark:bg-[#14532d]"></span>
+    <p class="text-sm font-medium text-gray-500 dark:text-gray-400">376 reviews</p>
+    <a href="#" class="ms-auto text-sm font-medium text-gray-400 hover:underline dark:text-gray-400">Read all
+        reviews</a>
+</div>
+<div class="gap-8 sm:grid sm:grid-cols-2">
+    <div>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Staff</dt>
+            <dd class="flex items-center mb-3">
+                <div class="w-full bg-gray-200 rounded-sm h-2.5  dark:bg-gray-200 me-2">
+                    <div class="bg-[#14532d] h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 88%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.8</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Comfort</dt>
+            <dd class="flex items-center mb-3">
+                <div class="w-full bg-gray-200 rounded-sm h-2.5  dark:bg-gray-200 me-2">
+                    <div class="bg-[#14532d] h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 89%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.9</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Free WiFi</dt>
+            <dd class="flex items-center mb-3">
+                <div class="w-full bg-gray-200 rounded-sm h-2.5  dark:bg-gray-200 me-2">
+                    <div class="bg-[#14532d] h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 88%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.8</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Facilities</dt>
+            <dd class="flex items-center">
+                <div class="w-full bg-gray-200 rounded-sm h-2.5  dark:bg-gray-200 me-2">
+                    <div class="bg-[#14532d] h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 54%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">5.4</span>
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Value for money</dt>
+            <dd class="flex items-center mb-3">
+                <div class="w-full bg-gray-100 rounded-sm h-2.5 dark:bg-gray-200 me-2">
+                    <div class="bg-gray-100 h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 89%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.9</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Cleanliness</dt>
+            <dd class="flex items-center mb-3">
+                <div class="w-full bg-gray-200 rounded-sm h-2.5  dark:bg-gray-200 me-2">
+                    <div class="bg-[#14532d] h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 70%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">7.0</span>
+            </dd>
+        </dl>
+        <dl>
+            <dt class="text-sm font-medium text-gray-500 dark:text-gray-400">Location</dt>
+            <dd class="flex items-center">
+                <div class="w-full bg-gray-200 rounded-sm h-2.5  dark:bg-gray-200 me-2">
+                    <div class="bg-[#14532d] h-2.5 rounded-sm dark:bg-[#14532d]" style="width: 89%"></div>
+                </div>
+                <span class="text-sm font-medium text-gray-500 dark:text-gray-400">8.9</span>
+            </dd>
+        </dl>
+    </div>
+</div>
+
+
+
+            </div>
+
+
+            
+                        <div class="border-t border-gray-200 border-2 "></div>
+
+            <div class="p-2 md:p-12">
+                <h2 class="text-2xl m-4 font-bold"><i class="fa-solid fa-shield"></i> Politicas de cancelacion</h2>
+                <p>Conoce las politicas de cancelacion</p>
+
+                <p class="mt-4">
+                    Cancelación gratuita antes del 29 abr. Si cancelas antes de la fecha de llegada (4 may), recibirás un reembolso parcial.
+                </p>
+                <p>
+                    Consulta la política completa de este anfitrión para obtener más información.
+                </p>
+
+                <a href="/terms" class="text-blue-600 underline">
+                    Mostrar más
+                </a>
+                
+            </div>
+            
+            
+            
+            <div class="border-t border-gray-200 border-2 "></div>
+
+            
+            
+            <div class="p-2 md:pl-12">
+                <h2 class="text-2xl m-4 font-bold"> <i class="fa-solid fa-scale-balanced"></i> Reglas de la terraza</h2>
+               <p>Llegada a partir de las 3:00 p.m.</p>
+                <p>Salida antes de las 11:00 a.m.</p>
+                <p>4 huéspedes como máximo</p>
+            
+ 
+            </div>
+
+                        <div class="border-t border-gray-200 border-2 "></div>
+
+            <div class="p-2 md:pl-12 mt-8">
+                <a  class="text-red-600 underline mt-12" href="/report/{{terraceId}}"><i class="fa-solid fa-triangle-exclamation"></i> Reporta esta terraza</a>
+            </div>
+        </div>
+    </div>
+     
+    
+    
+  
+
+</body>    

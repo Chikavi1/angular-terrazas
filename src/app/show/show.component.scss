@@ -1,0 +1,17 @@
+html,body{
+    height: 100%;
+    overflow: hidden;
+}
+
+.demo-inline-calendar-card {
+    width: 400px;
+}
+
+::ng-deep .mat-calendar .mat-calendar-body-selected {
+    background-color: #14532d !important;
+    color: white !important;
+ }
+
+::ng-deep .mat-calendar .mat-calendar-body-selected:hover {
+    background-color: #14532d !important;
+}
