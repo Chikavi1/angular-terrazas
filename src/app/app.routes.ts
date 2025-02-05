@@ -7,6 +7,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { MapaComponent } from './mapa/mapa.component';
 import { TermsComponent } from './terms/terms.component';
 import { IndexComponent } from './index/index.component';
+import { DashboardComponent } from './auth/dashboard/dashboard.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/landing-client', pathMatch: 'full' },
@@ -17,5 +18,10 @@ export const routes: Routes = [
   { path: 'checkout', component: CheckoutComponent },
   { path: 'index', component: IndexComponent },
   { path: 'search', component: MapaComponent },
-  { path: 'terms', component: TermsComponent }
+  { path: 'terms', component: TermsComponent },
+
+  { path: 'admin/dashboard', component: DashboardComponent }
+
+
+
 ];
