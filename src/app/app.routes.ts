@@ -8,6 +8,7 @@ import { MapaComponent } from './mapa/mapa.component';
 import { TermsComponent } from './terms/terms.component';
 import { IndexComponent } from './index/index.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
+import { ServicesComponent } from './services/services.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/landing-client', pathMatch: 'full' },
@@ -19,6 +20,7 @@ export const routes: Routes = [
   { path: 'index', component: IndexComponent },
   { path: 'search', component: MapaComponent },
   { path: 'terms', component: TermsComponent },
+  { path: 'services', component: ServicesComponent },
 
   { path: 'admin/dashboard', component: DashboardComponent }
 
