@@ -11,7 +11,7 @@ import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { ServicesComponent } from './services/services.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/landing-client', pathMatch: 'full' },
+  { path: '', redirectTo: '/index', pathMatch: 'full' },
   { path: 'landing-client', component: LandingClientComponent },
   { path: 'landing-business', component: LandingBusinessComponent },
   { path: 'login', component: LoginComponent },
