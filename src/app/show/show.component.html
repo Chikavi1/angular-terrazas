@@ -1,13 +1,12 @@
 
-<body>
+<body class="md:h-screen md:overflow-hidden">
     
     <div class="grid grid-cols-12">
         <div class="col-span-12 md:col-span-8  relative">
             <a href="/index">
-                <img class="absolute top-8 left-12 w-24 h-auto" src="https://i.ibb.co/GvgSkhRC/Dise-o-sin-t-tulo-2.png" alt="Logo">
+                <img class="absolute top-2 left-4 md:top-8 md:left-12 w-24 h-auto" src="https://i.ibb.co/GvgSkhRC/Dise-o-sin-t-tulo-2.png" alt="Logo">
             </a>
             
-            <!-- Botón en la esquina superior derecha -->
             <button (click)="shareOnWhatsApp()" class="absolute top-8 right-4 bg-white text-green-700 w-12 h-12 rounded-full shadow-md">
                 <i class="fa-solid fa-share-nodes"></i>
             </button>
@@ -15,11 +14,11 @@
             <img  class="w-full md:h-screen object-cover" [src]="slides[currentIndex].image" alt="">
 
             <button (click)="prevSlide()"
-                class="absolute left-4 top-1/2 transform -translate-y-2/2 bg-white p-2  w-12 h-12 rounded-full shadow-md ml-4">
+                class="absolute left-2  md:left-4 top-1/2 transform -translate-y-2/2 bg-white p-2  w-12 h-12 rounded-full shadow-md  ml-1 md:ml-4">
                 &#10094;
             </button>
             <button (click)="nextSlide()"
-                class="absolute right-4 top-1/2 transform -translate-y-2/2 bg-white p-2 w-12 h-12 rounded-full shadow-md mr-4">
+                class="absolute right-2 md:right-4 top-1/2 transform -translate-y-2/2 bg-white p-2 w-12 h-12 rounded-full shadow-md  ml-1 md:mr-4">
                 &#10095;
             </button>
 
@@ -27,14 +26,13 @@
             <div class="col-span-3 col-start-10 bg-green-900 text-white rounded-xl text-center  p-4 mr-4 border-2 border-green-800">
                 <a href="/checkout">Aparta con $ 200 MXN  </a>
             </div>
-        </div>
+        </div> 
 
 
         </div>
-        <div class="col-span-12 md:col-span-4 overflow-y-auto max-h-screen p-2 md:p-6">
-            <!-- contenido -->
+        <div class="col-span-12 md:col-span-4 md:overflow-y-auto md:max-h-screen p-2 md:p-6">
             <div class="p-2 md:p-12">
-            <h2 class="text-4xl  ">
+            <h2 class=" text-3xl  text-gray-900 md:text-4xl  ">
                 La terraza de Lupita
                 <i class="fa-solid fa-circle-check text-green-700 ml-2 fa-xs"></i>
             </h2>
@@ -47,11 +45,11 @@
             </div>
             
 
-             <mat-card class="demo-inline-calendar-card mx-auto">
+             <mat-card class="demo-inline-calendar-card mx-auto m-6">
                 <mat-calendar [(selected)]="selected" [dateFilter]="filtrarFechas"></mat-calendar>
             </mat-card>
 
-            <div class="p-2 md:p-12  grid grid-cols-12">
+            <div class="p-2 md:p-12  grid grid-cols-12 mt-8 md:mt-0">
                 <div class="col-span-6">
                     <!-- <h2 class="text-3xl font-bold ">Precios</h2> -->
                     <p class="text-green-800 font-bold">Desde los $ 2,900 MXN</p>
@@ -115,14 +113,14 @@
             
 
             <h2 class="text-2xl m-4 font-bold mt-12">Conoce al dueño de la terraza</h2>
-            <div class="p-12">
+            <div class="md:p-12 p-4">
                 <div class="grid grid-cols-12 ">
                     <div class="col-span-2">
                         <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1976&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                        class="w-20 h-20 rounded-full object-cover"   alt="">
+                        class="w-16 h-16 rounded-full object-cover"   alt="">
                     </div>
-                    <div class="col-span-6">
-                        <h2 class="text-2xl m-4 font-bold">Araceli Hernandez</h2>
+                    <div class="col-span-9">
+                        <h2 class=" text-xl md:text-2xl m-4 font-bold">Araceli Hernandez</h2>
                     </div>
                 </div>
 
