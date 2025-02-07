@@ -78,25 +78,43 @@
     <p id="helper-text-explanation" class="mt-2 text-sm text-gray-500 dark:text-gray-400">Please select a 5 digit number
         from 0 to 9.</p>
 </form> -->
+<a href="/index">
+    <img class=" top-8 left-12 ml-12 w-24 h-auto" src="https://i.ibb.co/GvgSkhRC/Dise-o-sin-t-tulo-2.png" alt="Logo">
+</a>
 
-
-<div class="grid grid-cols-12  max-w-sm mx-auto mt-2 px-2 py-1">
-    <div class="col-span-6">
+<div class="grid grid-cols-12  max-w-4xl mx-auto mt-2 px-2 py-1">
+    <div class="col-span-4  ">
         <div class="relative max-w-xl">
-            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none my-2">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
                     fill="currentColor" viewBox="0 0 20 20">
                     <path
                         d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
                 </svg>
             </div>
-            <input id="datepicker-autohide" datepicker datepicker-autohide type="text"
-                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm  rounded-s-lg  focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            <input [(ngModel)]="date" id="datepicker-autohide" datepicker datepicker-autohide type="text"
+                class="bg-gray-50 border-x-0 border-gray-300 rounded-s-lg h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Selecciona una fecha">
+        </div>
+    </div>
+    <div class="col-span-4  ">
+        <div class="relative max-w-xl">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                </svg>
+            </div>
+            <input
+            [(ngModel)]="date"
+            id="datepicker-autohide" datepicker datepicker-autohide type="text"
+                class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="Selecciona una fecha" >
         </div>
     </div>
-    <div class="col-span-4">
-        <div class="relative flex items-center max-w-[8rem]">
+    <div class="col-span-3 ">
+        <div class="relative flex items-center max-w-[14rem]">
             <button type="button" id="decrement-button" data-input-counter-decrement="quantity-input"
                 class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300  p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
                 <svg class="w-3 h-3 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -105,6 +123,7 @@
                 </svg>
             </button>
             <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation"
+            [(ngModel)]="capacity"
                 class="bg-gray-50 border-x-0 border-gray-300 h-11 text-center text-gray-900 text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                 placeholder="15" required />
             <button type="button" id="increment-button" data-input-counter-increment="quantity-input"
@@ -115,36 +134,43 @@
                         d="M9 1v16M1 9h16" />
                 </svg>
             </button>
-        </div>
-    </div>
-    <div class="col-span-2">
-        <div class="relative flex items-center max-w-[8rem]">
             <button type="button" id="increment-button" data-input-counter-increment="quantity-input"
-                class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                            <i class="fa-solid fa-magnifying-glass text-white"></i>
-            </button>
- 
+               class="bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 border border-gray-300 rounded-e-lg p-3 h-11 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
+                           <i class="fa-solid fa-magnifying-glass text-white"></i>
+           </button>
+
         </div>
     </div>
-    <div class="mx-auto mt-2">
-        <div class="flex gap-2 ">
-            <div
-                class="rounded-full bg-slate-800 py-0.5 px-2.5 border border-transparent text-sm text-white transition-all shadow-sm">
-                <!-- <i class="fa-solid fa-house"></i> -->
-                 Terrazas
-            </div>
-            <div
-                class="rounded-full bg-gradient-to-tr from-slate-800 to-slate-700 py-0.5 px-2.5 border border-transparent text-sm text-white transition-all shadow-sm">
-                <!-- <i class="fa-solid fa-champagne-glasses"></i> -->
-                 Servicios
-            </div>
-           
+
+    <div class="col-span-1">
+        
+    </div>
+
+    
+    
+    
+</div>
+<div class="mx-auto mt-2 ml-12">
+    <div class="flex gap-2 ">
+        <div
+        (click)="setType('terraice')"
+            class="rounded-full bg-slate-800 py-0.5 px-2.5 border border-transparent text-sm text-white transition-all shadow-sm">
+            <!-- <i class="fa-solid fa-house"></i> -->
+             Terrazas
         </div>
+        <div
+            (click)="setType('services')"
+            class="rounded-full bg-gradient-to-tr from-slate-800 to-slate-700 py-0.5 px-2.5 border border-transparent text-sm text-white transition-all shadow-sm">
+            <!-- <i class="fa-solid fa-champagne-glasses"></i> -->
+             Servicios
+        </div>
+       
     </div>
 </div>
 
  
-<div class="grid grid-cols-12 gap-2 md:px-12" >
+ 
+<div class="grid grid-cols-12 gap-2 md:px-12" *ngIf="type == 'terraice' ">
     <div class="col-span-12 md:col-span-3" *ngFor="let terraza of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
     <a href="/terraza/1" target="_blank" class="block rounded-lg p-4 shadow-xs shadow-indigo-100">
         <img alt=""
@@ -188,4 +214,50 @@
         </div>
     </a>
     </div>
+</div>
+
+<div  class="grid grid-cols-12 gap-2 md:px-12" *ngIf="type == 'services' ">
+<div class="col-span-12 md:col-span-3" *ngFor="let terraza of [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]">
+    <div (click)="openDialog()" target="_blank" class="block rounded-lg p-4 shadow-xs shadow-indigo-100">
+        <img alt=""
+            src="https://scontent.fgdl3-1.fna.fbcdn.net/v/t45.5328-4/474924000_1139958507837474_4557353225845255110_n.jpg?stp=dst-jpg_p720x720_tt6&_nc_cat=111&ccb=1-7&_nc_sid=247b10&_nc_ohc=n6iKA59MOqEQ7kNvgENR5QE&_nc_oc=Adh0dKtyl26fKH0HZMt0Cq1EmTx2iH2r7AD7A8hD0KGvVoIpylafdGzkAyyTVF5WnZTK94LtDpGb4ubGne_GdOy0&_nc_zt=23&_nc_ht=scontent.fgdl3-1.fna&_nc_gid=Ak_3539HhoiVhumQ6F7omzb&oh=00_AYCnLdPcfbIf4rMmXAkKQU2cnajaX0TmrxowMGHel5Jazw&oe=67AB29AB"
+            class="h-56 w-full rounded-md object-cover" />
+
+        <div class="mt-2">
+            <dl>
+                <div>
+                    <dt class="sr-only">Price</dt>
+                    <dd class="text-sm text-gray-500">$2,000</dd>
+                </div>
+                <div>
+                    <dt class="sr-only">Address</dt>
+                    <dd class="font-medium">El SAZON DE LA ABUELA</dd>
+                </div>
+            </dl>
+
+            <div class="mt-6 flex items-center gap-8 text-xs">
+                <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                    <div class="mt-1.5 sm:mt-0">
+                        <p class="text-gray-500">Capacidad</p>
+                        <p class="font-medium">30 personas</p>
+                    </div>
+                </div>
+
+                <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                    <div class="mt-1.5 sm:mt-0">
+                        <p class="text-gray-500">Duración</p>
+                        <p class="font-medium">8 horas</p>
+                    </div>
+                </div>
+
+                <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
+                    <div class="mt-1.5 sm:mt-0">
+                        <p class="text-gray-500">Bedroom</p>
+                        <p class="font-medium">4 rooms</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>
