@@ -9,36 +9,79 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
   selector: 'app-show',
   standalone: true,
   providers: [provideNativeDateAdapter(),
-    { provide:  MAT_DATE_LOCALE, useValue: 'es-ES'}
+  { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
   ],
-  imports: [CommonModule,MatCardModule, MatDatepickerModule],
+  imports: [CommonModule, MatCardModule, MatDatepickerModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './show.component.html',
   styleUrl: './show.component.scss'
 })
-export class ShowComponent implements AfterViewInit{
+  
+  
+export class ShowComponent implements AfterViewInit {
   map: L.Map | undefined;
   selected = model<Date | null>(null);
 
-    @ViewChild('originalButton') originalButton!: ElementRef;
-    isButtonVisible: boolean = true;  
-    blockedDates: string[] = ['2025-02-10', '2025-02-15', '2025-02-20'];
+  @ViewChild('originalButton') originalButton!: ElementRef;
+  isButtonVisible: boolean = true;
+  blockedDates: string[] = ['2025-02-10', '2025-02-15', '2025-02-20'];
 
   filtrarFechas = (date: Date | null): boolean => {
     if (!date) return false;
     const today = new Date();
-    today.setHours(0, 0, 0, 0);  
+    today.setHours(0, 0, 0, 0);
     if (date < today) return false;
-     const dateString = date.toISOString().split('T')[0];  
+    const dateString = date.toISOString().split('T')[0];
     return !this.blockedDates.includes(dateString);
   };
 
+  terrace:any;
+  slides = [
+    
+  ]
+  constructor(private cdr: ChangeDetectorRef) { }
   
-  constructor(private cdr: ChangeDetectorRef) {}
-  
-   ngOnInit(): void {
+  ngOnInit(): void {
     this.initMap();
-   }
+     
+    this.terrace = {
+      id: "12345",
+      title: "Terraza con vista al mar",
+      photos: [
+        "https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1613685302957-3a6fc45346ef?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+        "https://images.unsplash.com/photo-1580469322701-45b34d5e6e9b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+      ],
+      description: "Hermosa terraza con vista al mar, ideal para eventos privados.",
+      capacity: 50,
+      hours: 12,
+      location: {
+        address: "Calle Principal 123",
+        city: "Barcelona",
+        country: "España",
+        latitude: 40.4167,
+        longitude: -3.7033
+      },
+      amenities: ["wifi", "parrilla", "bar"],
+      isAvailable: true,
+      rating: 4.5,
+      reviews: [
+        { rating: 4, comment: 'Comentario 1' },
+        { rating: 5, comment: 'Comentario 2' }
+      ],
+      pricing: [
+        {
+          weekdays: 1700,
+          weekends: 2000,
+        }
+      ]
+    };
+
+      this.slides =  this.terrace.photos;
+
+    
+  }
+ 
   
     ngAfterViewInit() {
     const observer = new IntersectionObserver(([entry]) => {
@@ -96,11 +139,6 @@ export class ShowComponent implements AfterViewInit{
   
   terraceId: number = 1;
 
-  slides = [
-    { image: 'https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { image: 'https://images.unsplash.com/photo-1613685302957-3a6fc45346ef?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' },
-    { image: 'https://images.unsplash.com/photo-1580469322701-45b34d5e6e9b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }
-  ];
   
   currentIndex = 0;
 
@@ -112,34 +150,34 @@ export class ShowComponent implements AfterViewInit{
     this.currentIndex = (this.currentIndex < this.slides.length - 1) ? this.currentIndex + 1 : 0;
   }
  
-  terrace = {
-    id: 1,
-    name: 'Terraza 1',
-    description: 'Descripción de la terraza 1',
-    image: 'https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-    price: 100,
-    location: 'Ubicación de la terraza 1',
-    capacity: 10,
-    available: true,
-    amenities: [
-      {
-        icon: 'fa-wifi',
-        name: 'Internet',
-      },
-      {
-        icon: 'fa-music',
-        name: 'Bocina',
-      },
-      {
-        icon: 'fa-utensils',
-        name: 'Cocina',
-      }
-    ],
-    reviews: [
-      { rating: 4, comment: 'Comentario 1' },
-      { rating: 5, comment: 'Comentario 2' }
-    ],
+  // terrace = {
+  //   id: 1,
+  //   name: 'Terraza 1',
+  //   description: 'Descripción de la terraza 1',
+  //   image: 'https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
+  //   price: 100,
+  //   location: 'Ubicación de la terraza 1',
+  //   capacity: 10,
+  //   available: true,
+  //   amenities: [
+  //     {
+  //       icon: 'fa-wifi',
+  //       name: 'Internet',
+  //     },
+  //     {
+  //       icon: 'fa-music',
+  //       name: 'Bocina',
+  //     },
+  //     {
+  //       icon: 'fa-utensils',
+  //       name: 'Cocina',
+  //     }
+  //   ],
+  //   reviews: [
+  //     { rating: 4, comment: 'Comentario 1' },
+  //     { rating: 5, comment: 'Comentario 2' }
+  //   ],
 
-  }
+  // }
 
 }

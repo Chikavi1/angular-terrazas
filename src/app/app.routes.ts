@@ -9,6 +9,7 @@ import { TermsComponent } from './terms/terms.component';
 import { IndexComponent } from './index/index.component';
 import { DashboardComponent } from './auth/dashboard/dashboard.component';
 import { ServicesComponent } from './services/services.component';
+import { CalendarComponent } from './auth/calendar/calendar.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/index', pathMatch: 'full' },
@@ -22,7 +23,8 @@ export const routes: Routes = [
   { path: 'terms', component: TermsComponent },
   { path: 'services', component: ServicesComponent },
 
-  { path: 'admin/dashboard', component: DashboardComponent }
+  { path: 'admin/dashboard', component: DashboardComponent },
+  { path: 'admin/calendar', component: CalendarComponent }
 
 
 
