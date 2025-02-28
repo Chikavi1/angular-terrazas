@@ -1,30 +1,36 @@
 <div class="grid grid-cols-12 h-screen">
     <!-- Contenedor scrollable -->
-    <div class="col-span-7 p-12 overflow-y-auto h-screen">
-        <a href="/index">
-            <img class=" top-8 left-12 w-24 h-auto" src="https://i.ibb.co/GvgSkhRC/Dise-o-sin-t-tulo-2.png" alt="Logo">
-        </a>
-        <!-- <h2 class="text-4xl font-bold mb-8">Terrazas</h2> -->
+    <div class="col-span-12 md:col-span-7 p-12 overflow-y-auto h-screen">
 
-        <!-- chips -->
+        <div class="grid grid-cols-12">
+            <div class="col-span-2">
+                <a href="/index">
+                    <img class=" top-8 left-12 w-24 h-auto" src="https://i.ibb.co/GvgSkhRC/Dise-o-sin-t-tulo-2.png" alt="Logo">
+                </a>
+            </div>
+            <div class="col-span-9 mt-4">
+                <app-search-input></app-search-input>
+            </div>
+        </div>
 
-        <!-- cards -->
+ 
         <div class="grid grid-cols-2">
-            <div class="col-span-1" *ngFor="let terraza of terrazas">
-                <a href="/terraza/1" target="_blank" class="block rounded-lg p-4 shadow-xs shadow-indigo-100">
+            <div class="col-span-2 md:col-span-1" *ngFor="let terraice of terraices">
+                <a href="/t/{{terraice.id}}" target="_blank" class="block rounded-lg p-4 shadow-xs shadow-indigo-100">
                     <img alt=""
-                        src="https://images.unsplash.com/photo-1613545325278-f24b0cae1224?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80"
+                        [src]="terraice.images[0]"
+                        
                         class="h-56 w-full rounded-md object-cover" />
 
                     <div class="mt-2">
                         <dl>
                             <div>
                                 <dt class="sr-only">Price</dt>
-                                <dd class="text-sm text-gray-500">$2,000</dd>
+                                <dd class="text-sm text-gray-500">${{terraice.pricing}}</dd>
                             </div>
                             <div>
                                 <dt class="sr-only">Address</dt>
-                                <dd class="font-medium">Terraza de Lupita</dd>
+                                <dd class="font-medium">{{terraice.name}}</dd>
                             </div>
                         </dl>
 
@@ -32,23 +38,18 @@
                             <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                                 <div class="mt-1.5 sm:mt-0">
                                     <p class="text-gray-500">Alberga</p>
-                                    <p class="font-medium">26 personas</p>
+                                    <p class="font-medium">{{terraice.capacity}} personas</p>
                                 </div>
                             </div>
 
                             <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
                                 <div class="mt-1.5 sm:mt-0">
                                     <p class="text-gray-500">Duración</p>
-                                    <p class="font-medium">8 horas</p>
+                                    <p class="font-medium">{{terraice.duration}} horas</p>
                                 </div>
                             </div>
 
-                            <div class="sm:inline-flex sm:shrink-0 sm:items-center sm:gap-2">
-                                <div class="mt-1.5 sm:mt-0">
-                                    <p class="text-gray-500">Bedroom</p>
-                                    <p class="font-medium">4 rooms</p>
-                                </div>
-                            </div>
+                             
                         </div>
                     </div>
                 </a>
@@ -58,7 +59,7 @@
     </div>
 
     <!-- Contenedor del mapa fijo -->
-    <div class="col-span-5 h-screen">
+    <div class=" col-span-12 md:col-span-5 h-screen">
         <div id="map" style="height: 100vh;width: 100;;" class=" sticky top-0"></div>
     </div>
 </div>

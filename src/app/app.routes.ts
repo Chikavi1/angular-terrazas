@@ -16,7 +16,7 @@ export const routes: Routes = [
   { path: 'landing-client', component: LandingClientComponent },
   { path: 'landing-business', component: LandingBusinessComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'terraza/:terraceId', component: ShowComponent },
+  { path: 't/:id', component: ShowComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'index', component: IndexComponent },
   { path: 'search', component: MapaComponent },

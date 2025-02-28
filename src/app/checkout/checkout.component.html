@@ -1,278 +1,134 @@
-<section class="bg-white dark:bg-gray-900 py-8 antialiased h-screen md:py-16">
+<section class="bg-white  py-8 antialiased h-screen md:py-16">
     <div class="  max-w-screen-xl px-4 2xl:px-0">
         <div class="mx-auto max-w-5xl">
-            <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl">Reserva</h2>
+            <h2 class="text-xl font-semibold text-gray-900  sm:text-2xl">
+                <i (click)="back()" class="fa-solid fa-arrow-left"></i> Reserva</h2>
+
+            <div class="mt-6 grid grid-cols-12">
+                <div class="md:col-span-2 col-span-4">
+                    <img class="w-40 rounded-md" src="https://plus.unsplash.com/premium_photo-1712736395906-dd23bfe7f3b2?q=80&w=2075&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
+                </div>
+                <div class="md:col-span-8 col-span-8 px-4">
+                    <h2 class="font-bold">Terraza lupita</h2>
+                    <p>Sábado, 22 de marzo del 2025</p>
+                </div>
+            </div>
 
             <div class="mt-6 sm:mt-8 lg:flex lg:items-start lg:gap-12">
                 <form action="#"
-                    class="w-full rounded-lg border border-gray-200 bg-white p-4 shadow-sm dark:border-gray-700 dark:bg-gray-800 sm:p-6 lg:max-w-xl lg:p-8">
+                    class="w-full rounded-lg border border-gray-300 bg-white p-4 shadow-sm border-gray-100  sm:p-6 lg:max-w-xl lg:p-8">
                     <div class="mb-6 grid grid-cols-2 gap-4">
                         <div class="col-span-2 sm:col-span-1">
-                            <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">
-                                Full name (as displayed on card)* </label>
+                            <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 ">
+                                Nombre (como en la tarjeta)* </label>
                             <input type="text" id="full_name"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 border-gray-600 bg-gray-100  placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500"
                                 placeholder="Luis Rojas" required />
                         </div>
 
                         <div class="col-span-2 sm:col-span-1">
+                            <label for="full_name" class="mb-2 block text-sm font-medium text-gray-900 ">
+                                Correo electrónico* </label>
+                            <input type="text" id="full_name"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 border-gray-600 bg-gray-100  placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500"
+                                placeholder="micorreo@gmail.com" required />
+                        </div>
+
+                        <div class="col-span-2 sm:col-span-2">
                             <label for="card-number-input"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white"> Card number*
+                                class="mb-2 block text-sm font-medium text-gray-900 "> Card number*
                             </label>
                             <input type="text" id="card-number-input"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500  dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
+                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 pe-10 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500  border-gray-600 bg-gray-100  placeholder:text-gray-400 focus:border-primary-500 focus:ring-primary-500"
                                 placeholder="xxxx-xxxx-xxxx-xxxx" pattern="^4[0-9]{12}(?:[0-9]{3})?$" required />
                         </div>
 
-                        <div>
-                            <label for="card-expiration-input"
-                                class="mb-2 block text-sm font-medium text-gray-900 dark:text-white">Card expiration*
-                            </label>
-                            <div class="relative">
-                                <div class="pointer-events-none absolute inset-y-0 start-0 flex items-center ps-3.5">
-                                    <svg class="h-4 w-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
-                                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
-                                        viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd"
-                                            d="M5 5a1 1 0 0 0 1-1 1 1 0 1 1 2 0 1 1 0 0 0 1 1h1a1 1 0 0 0 1-1 1 1 0 1 1 2 0 1 1 0 0 0 1 1h1a1 1 0 0 0 1-1 1 1 0 1 1 2 0 1 1 0 0 0 1 1 2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a2 2 0 0 1 2-2ZM3 19v-7a1 1 0 0 1 1-1h16a1 1 0 0 1 1 1v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2Zm6.01-6a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm2 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm6 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm-10 4a1 1 0 1 1 2 0 1 1 0 0 1-2 0Zm6 0a1 1 0 1 0-2 0 1 1 0 0 0 2 0Zm2 0a1 1 0 1 1 2 0 1 1 0 0 1-2 0Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                                <input datepicker datepicker-format="mm/yy" id="card-expiration-input" type="text"
-                                    class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 ps-9 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-blue-500 dark:focus:ring-blue-500"
-                                    placeholder="12/23" required />
-                            </div>
-                        </div>
-                        <div>
-                            <label for="cvv-input"
-                                class="mb-2 flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white">
-                                CVV*
-                                <button data-tooltip-target="cvv-desc" data-tooltip-trigger="hover"
-                                    class="text-gray-400 hover:text-gray-900 dark:text-gray-500 dark:hover:text-white">
-                                    <svg class="h-4 w-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                                        fill="currentColor" viewBox="0 0 24 24">
-                                        <path fill-rule="evenodd"
-                                            d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                                <div id="cvv-desc" role="tooltip"
-                                    class="tooltip invisible absolute z-10 inline-block rounded-lg bg-gray-900 px-3 py-2 text-sm font-medium text-white opacity-0 shadow-sm transition-opacity duration-300 dark:bg-gray-700">
-                                    The last 3 digits on back of card
-                                    <div class="tooltip-arrow" data-popper-arrow></div>
-                                </div>
-                            </label>
-                            <input type="number" id="cvv-input" aria-describedby="helper-text-explanation"
-                                class="block w-full rounded-lg border border-gray-300 bg-gray-50 p-2.5 text-sm text-gray-900 focus:border-primary-500 focus:ring-primary-500 dark:border-gray-600 dark:bg-gray-700 dark:text-white dark:placeholder:text-gray-400 dark:focus:border-primary-500 dark:focus:ring-primary-500"
-                                placeholder="•••" required />
-                        </div>
+                         
+                       
                     </div>
 
                     <button type="submit"
-                        class="flex w-full items-center justify-center rounded-lg bg-primary-700 px-5 py-2.5 text-sm font-medium text-dark hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300 dark:bg-white dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+                        class="flex w-full items-center justify-center rounded-lg bg-gray-800 px-5 py-2.5 text-sm font-medium text-white hover:bg-primary-800 focus:outline-none focus:ring-4  focus:ring-primary-300  hover:bg-primary-100 focus:ring-primary-800">
                         Pagar ahora
                     </button>
                 </form>
 
                 <div class="mt-6 grow sm:mt-8 lg:mt-0">
                     <div
-                        class="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 dark:border-gray-700 dark:bg-gray-800">
+                        class="space-y-4 rounded-lg border border-gray-100 bg-gray-50 p-6 border-gray-100 ">
                         <div class="space-y-2">
                             <dl class="flex items-center justify-between gap-4">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Precio </dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">$2,592.00</dd>
+                                <dt class="text-base font-normal text-gray-500 text-gray-400">Precio </dt>
+                                <dd class="text-base font-medium text-gray-900 ">$2,592.00</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Reserva con</dt>
+                                <dt class="text-base font-normal text-gray-500 text-gray-400">Reserva con</dt>
                                 <dd class="text-base font-medium text-green-500">-$259.00</dd>
                             </dl>
 
                             <dl class="flex items-center justify-between gap-4">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">A pagar en efectivo</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">$2,333.00</dd>
+                                <dt class="text-base font-normal text-gray-500 text-gray-400">A pagar en efectivo</dt>
+                                <dd class="text-base font-medium text-gray-900 ">$2,333.00</dd>
                             </dl>
 
                             <!-- <dl class="flex items-center justify-between gap-4">
-                                <dt class="text-base font-normal text-gray-500 dark:text-gray-400">Tax</dt>
-                                <dd class="text-base font-medium text-gray-900 dark:text-white">$799</dd>
+                                <dt class="text-base font-normal text-gray-500 text-gray-400">Tax</dt>
+                                <dd class="text-base font-medium text-gray-900 ">$799</dd>
                             </dl> -->
                         </div>
 
                         <dl
-                            class="flex items-center justify-between gap-4 border-t border-gray-200 pt-2 dark:border-gray-700">
-                            <dt class="text-base font-bold text-gray-900 dark:text-white">Reserva ahorita</dt>
-                            <dd class="text-base font-bold text-gray-900 dark:text-white">$259.00</dd>
+                            class="flex items-center justify-between gap-4 border-t border-gray-300 pt-2 ">
+                            <dt class="text-base font-bold text-gray-900 ">Reserva ahorita</dt>
+                            <dd class="text-base font-bold text-gray-900 ">$259.00</dd>
                         </dl>
                     </div>
 
                     <div class="mt-6 flex items-center justify-center gap-8">
-                        <!-- <img class="h-8 w-auto dark:hidden"
+                        <!-- <img class="h-8 w-auto hidden"
                             src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/paypal.svg" alt="" /> -->
-                        <!-- <img class="hidden h-8 w-auto dark:flex"
+                        <!-- <img class="hidden h-8 w-auto flex"
                             src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/paypal-dark.svg"
                             alt="" /> -->
-                        <img class="h-8 w-auto dark:hidden"
+                        <img class="h-8 w-auto hidden"
                             src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/visa.svg" alt="" />
-                        <img class="hidden h-8 w-auto dark:flex"
+                        <img class="hidden h-8 w-auto flex"
                             src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/visa-dark.svg"
                             alt="" />
-                        <img class="h-8 w-auto dark:hidden"
+                        <img class="h-8 w-auto hidden"
                             src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/mastercard.svg"
                             alt="" />
-                        <img class="hidden h-8 w-auto dark:flex"
+                        <img class="hidden h-8 w-auto flex"
                             src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/brand-logos/mastercard-dark.svg"
                             alt="" />
                     </div>
                 </div>
             </div>
 
-            <p class="mt-6 text-center text-gray-500 dark:text-gray-400 sm:mt-8 lg:text-left">
-                Pago procesado por <a href="#" title=""
-                    class="font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">Stripe</a>
-                para <a href="#" title=""
-                    class="font-medium text-primary-700 underline hover:no-underline dark:text-primary-500">UPoints
-                    S:A de C.V</a>
+            <p class="mt-6 text-center text-gray-500 text-gray-400 sm:mt-8 lg:text-left">
+                Pago procesado por <a href="https://stripe.com/mx/resources/more/secure-payment-systems-explained" title=""
+                    class="font-medium text-primary-100 underline hover:no-underline text-primary-500">Stripe</a>
+                <!-- para <a href="#" title=""
+                    class="font-medium text-primary-100 underline hover:no-underline text-primary-500">UPoints
+                    S:A de C.V</a> -->
                 - México
             </p>
 
-            <div class="max-w-screen-xl px-4 2xl:px-0">
+            <!-- <div class="max-w-screen-xl px-4 2xl:px-0">
                 <div class="mx-auto max-w-5xl">
-                    <h2 class="text-xl font-semibold text-gray-900 dark:text-white sm:text-2xl mt-16">Reserva</h2>
+                    <h2 class="text-xl font-semibold text-gray-900  sm:text-2xl mt-16">Reserva</h2>
                     <h2>Agrega servicios</h2>
                     <p>Los mejores servicios de una.</p>
         
                     <button mat-button (click)="openDialog()">Open dialog</button>
         
                 </div>
-            </div>
+            </div> -->
         </div>
     </div>
 
-<section class="px-4 py-24 mx-auto max-w-7xl">
-    <h2 class="mb-2 text-3xl font-extrabold leading-tight text-gray-900">Skcript Blog</h2>
-    <p class="mb-20 text-lg text-gray-500">Comes directly from the desk of engineers, creators and managers at Skcript.
-    </p>
-    <div class="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3">
-        <div>
-            <a href="#">
-                <img src="/brand/og.png" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty"
-                    loading="lazy" />
-            </a>
-            <h2 class="mb-2 text-lg font-semibold text-gray-900">
-                <a href="#" class="text-gray-900 hover:text-purple-700">Process Documents Using Artificial Intelligence
-                    For RPA Bots</a>
-            </h2>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                Earlier RPA bots used to have some limitations like it would take structured data for processing from
-                excel, database, on these data. But with advancements in technology like OCR (Optical
-                Character Recognition) and Machine Learning, RPA bots are capable of extracting these data …
-            </p>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
-                • April 16, 2020
-            </p>
-        </div>
-        <div>
-            <a href="#">
-                <img src="/brand/og-white.png" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty"
-                    loading="lazy" />
-            </a>
-            <h2 class="mb-2 text-lg font-semibold text-gray-900">
-                <a href="#" class="text-gray-900 hover:text-purple-700">Implement Dark Mode in Your Android App</a>
-            </h2>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                Are you curious to implement the Dark Mode in Android Application? Here’s the perfect guideline to
-                attain the Dark Mode in Android Application. Don’t waste your time; just implement and enjoy
-                Dark Mode.
-            </p>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
-                • April 16, 2020
-            </p>
-        </div>
-        <div>
-            <a href="#">
-                <img src="/brand/og.png" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty"
-                    loading="lazy" />
-            </a>
-            <h2 class="mb-2 text-lg font-semibold text-gray-900">
-                <a href="#" class="text-gray-900 hover:text-purple-700">Why is Mental Health one of the Important Issues
-                    to Address?</a>
-            </h2>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                Mental health was one of the under spoken topics before this lockdown. After sitting at home for about
-                six months I realized that this is one of the important issues to address not only in the
-                work sector but also in daily living.
-            </p>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
-                • April 16, 2020
-            </p>
-        </div>
-        <div>
-            <a href="#">
-                <img src="/brand/og-white.png" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty"
-                    loading="lazy" />
-            </a>
-            <h2 class="mb-2 text-lg font-semibold text-gray-900">
-                <a href="#" class="text-gray-900 hover:text-purple-700">Pattern Matching In Elixir</a>
-            </h2>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                Pattern matching is a great way to write idiomatic functional code. It’s a powerful tenant of functional
-                programming that makes it a joy to write conditional statements. If you don’t want your
-                code to be peppered with deeply nested statements or multiple variations of similar business logic, use
-                pattern matching!
-            </p>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
-                • April 16, 2020
-            </p>
-        </div>
-        <div>
-            <a href="#">
-                <img src="/brand/og.png" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty"
-                    loading="lazy" />
-            </a>
-            <h2 class="mb-2 text-lg font-semibold text-gray-900">
-                <a href="#" class="text-gray-900 hover:text-purple-700">3 things you should change during your focus
-                    group interview</a>
-            </h2>
-            <p class="mb-3 text-sm font-normal text-gray-500">We changed three things about our feedback sessions, and
-                it changed everything about running customer feedback sessions.</p>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
-                • April 16, 2020
-            </p>
-        </div>
-        <div>
-            <a href="#">
-                <img src="/brand/og-white.png" class="object-cover w-full h-56 mb-5 bg-center rounded" alt="Kutty"
-                    loading="lazy" />
-            </a>
-            <h2 class="mb-2 text-lg font-semibold text-gray-900">
-                <a href="#" class="text-gray-900 hover:text-purple-700">Using Webpack with React Typescript</a>
-            </h2>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                Ever wondered if there is a way to just tie up all your code into one single module for easy usage. If
-                so, in this article I will show you how to bundle all your code into a single javascript
-                module that you can easily use in any other project.
-            </p>
-            <p class="mb-3 text-sm font-normal text-gray-500">
-                <a href="#" class="font-medium text-gray-900 hover:text-purple-700">Praveen Juge</a>
-                • April 16, 2020
-            </p>
-        </div>
-    </div>
-    <div
-        class="flex flex-col items-center justify-center mt-20 space-x-0 space-y-2 md:space-x-2 md:space-y-0 md:flex-row">
-        <a href="#" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Previous Page</a>
-        <a href="#" class="w-full rounded-full btn btn-light btn-xl md:w-auto">Next Page</a>
-    </div>
-</section>
-
-
-
+ 
 </section>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/datepicker.min.js"></script>

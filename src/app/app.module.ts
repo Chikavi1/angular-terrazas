@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module'; // Importa el módulo d
 import { LandingClientComponent } from './landing-client/landing-client.component'; // Tu componente de cliente
 import { LandingBusinessComponent } from './landing-business/landing-business.component'; // Tu componente de negocio
 import { LoginComponent } from './login/login.component'; // Tu componente de login
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { LoginComponent } from './login/login.component'; // Tu componente de lo
     LoginComponent               // Componente de login
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,               // Importa el módulo de navegador
     AppRoutingModule             // Importa el módulo de rutas que contiene las rutas definidas
   ],

@@ -23,5 +23,9 @@ export class CheckoutComponent {
     });
   }
 
+  back(){
+    window.history.back();
+  }
+
 
 }

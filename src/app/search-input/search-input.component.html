@@ -1,0 +1,78 @@
+<div class="grid grid-cols-12  max-w-4xl mx-auto mt-2 px-2 py-1">
+    <div class="col-span-4  ">
+        <div class="relative max-w-xl">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M10 0C6.686 0 4 2.686 4 6c0 4.056 4.722 9.193 5.316 9.895a1 1 0 0 0 1.368 0C11.278 15.193 16 10.056 16 6c0-3.314-2.686-6-6-6Zm0 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z" />
+                </svg>
+
+            </div>
+
+            <select [(ngModel)]="city"
+                class=" border-x-0 hover:bg-gray-200 border-gray-300 rounded-s-lg h-11 text-center text-black text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5   bg-gray-50  dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                <option value="gdl">Guadalajara</option>
+                <option value="mty">Monterrey</option>
+
+            </select>
+
+
+
+        </div>
+    </div>
+    <div class="col-span-4  ">
+        <div class="relative max-w-xl">
+            <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path
+                        d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z" />
+                </svg>
+            </div>
+            <input [(ngModel)]="date" id="datepicker-autohide" datepicker datepicker-autohide type="text"
+            autocomplete="off"
+                class="bg-gray-50 border-x-0 hover:bg-gray-200 border-gray-300 h-11 text-center text-black text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5   bg-gray-50  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Selecciona una fecha">
+        </div>
+    </div>
+    <div class="col-span-3 ">
+        <div class="relative flex items-center max-w-[14rem] bg-gray-50 ">
+
+            <button type="button"   id="decrement-button" (click)="decrement()"
+                class="border-bg-gray-50 p-3 h-11  hover:bg-gray-200  focus:ring-2  ">
+                <svg class="w-3 h-3 hover:bg-gray-200  bg-gray-50" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 18 2">
+                    <path stroke="currentColor" class="hover:bg-gray-200" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M1 1h16" />
+                </svg>
+            </button>
+
+            <input type="text" id="quantity-input" data-input-counter aria-describedby="helper-text-explanation"
+                [(ngModel)]="capacity"
+                 
+                (change)="validateCapacity()" 
+                class="bg-gray-50 border-x-0  h-11 text-center text-black text-sm focus:ring-blue-500 focus:border-blue-500 block w-full py-2.5  bg-gray-50  dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="personas" required />
+
+            <button type="button" id="increment-button" (click)="increment()"
+                class="border-gray-50        p-3 h-11 focus:ring-gray-100  focus:ring-2 focus:outline-none">
+                <svg class="w-3 h-3 text-black " aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    fill="none" viewBox="0 0 18 18">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 1v16M1 9h16" />
+                </svg>
+            </button>
+
+            <button (click)="search()" type="button" id="increment-button"
+                class="border-gray-50 text-black   hover:bg-gray-200    rounded-e-lg p-3 h-11 focus:ring-gray-100  focus:ring-2 focus:outline-none">
+                <i class="fa-solid fa-magnifying-glass text-gray-500    "></i>
+            </button>
+
+        </div>
+    </div>
+
+
+
+
+</div>

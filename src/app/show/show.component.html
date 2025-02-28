@@ -2,7 +2,10 @@
 <body class="md:h-screen md:overflow-hidden">
     
     <div class="grid grid-cols-12">
-        <div class="col-span-12 md:col-span-8  relative">
+        <div class="col-span-12 md:col-span-8  relative bg-black ">
+
+            
+            
             <a href="/index">
                 <img class="absolute top-2 left-4 md:top-8 md:left-12 w-24 h-auto  " src="https://i.ibb.co/GvgSkhRC/Dise-o-sin-t-tulo-2.png" alt="Logo">
             </a>
@@ -11,7 +14,17 @@
                 <i class="fa-solid fa-share-nodes"></i>
             </button>
 
-            <img  class="w-full md:h-screen object-cover  h-42" [src]="slides[currentIndex]" alt="">
+            <img class="w-full h-full object-cover" [src]="slides[currentIndex]" alt="">
+            
+            <!-- Capa oscura para efecto de brillo -->
+             
+            <!-- Contenido encima -->
+            <div class="grid grid-cols-12 -mt-20 hidden md:grid" *ngIf="!isButtonVisible">
+                <div
+                    class="col-span-3 col-start-10 bg-green-900 text-white rounded-xl text-center p-4 mr-4 border-2 border-green-800">
+                    <a href="/checkout">Aparta con $ 200 MXN</a>
+                </div>
+            </div>
 
             <button (click)="prevSlide()"
                 class="absolute left-2  md:left-4 top-1/2 transform -translate-y-2/2 bg-white p-2  w-12 h-12 rounded-full shadow-md  ml-1 md:ml-4">
@@ -22,25 +35,21 @@
                 &#10095;
             </button>
 
-        <div class="grid grid-cols-12 -mt-20 hidden md:grid"   *ngIf="!isButtonVisible">
-            <div class="col-span-3 col-start-10 bg-green-900 text-white rounded-xl text-center  p-4 mr-4 border-2 border-green-800">
-                <a href="/checkout">Aparta con $ 200 MXN  </a>
-            </div>
-        </div> 
+      
 
 
         </div>
         <div class="col-span-12 md:col-span-4 md:overflow-y-auto md:max-h-screen p-2 md:p-6">
             <div class="p-2 md:p-12">
             <h2 class=" text-3xl  text-gray-900 md:text-4xl  ">
-               {{ terrace.title}}
+               {{ terrace.name }}
                 <i class="fa-solid fa-circle-check text-green-700 ml-2 fa-xs"></i>
             </h2>
                 <p class="text-lg text-gray-600"> <i class="fa-solid fa-location-dot"></i> Terraza en Guadalajara</p>
-                <p class="mt-6 text-gray-500 min-h-44">
+                <p class="mt-6 text-gray-500 max-h-44">
                    {{ terrace.description}}
                 </p>
-            </div>
+             </div>
             
 
             <div class="px-4 md:px-20">
@@ -52,7 +61,7 @@
             <div class="p-2 md:p-12  grid grid-cols-12 mt-8 md:mt-0">
                 <div class="col-span-6">
                     <!-- <h2 class="text-3xl font-bold ">Precios</h2> -->
-                    <p class="text-green-800 font-bold">Desde los $ 2,900 MXN</p>
+                    <p class="text-green-800 font-bold">Desde los $ {{terrace.pricing }} MXN</p>
                     <p class="text-gray-600">Dependiendo del dia</p>
                 </div>
                 <div class="col-span-6">

@@ -4,14 +4,19 @@ import { CommonModule } from '@angular/common';
 import {MatCardModule} from '@angular/material/card';
 import {MAT_DATE_LOCALE, provideNativeDateAdapter} from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MetatagsService } from '../services/metatags.service';
+import { ApiService } from '../services/api.service';
+import { HttpClientModule } from '@angular/common/http';
+import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-show',
   standalone: true,
-  providers: [provideNativeDateAdapter(),
+  providers: [provideNativeDateAdapter(),ApiService,
   { provide: MAT_DATE_LOCALE, useValue: 'es-ES' }
   ],
-  imports: [CommonModule, MatCardModule, MatDatepickerModule],
+  imports: [CommonModule, MatCardModule, MatDatepickerModule, HttpClientModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './show.component.html',
   styleUrl: './show.component.scss'
@@ -26,6 +31,10 @@ export class ShowComponent implements AfterViewInit {
   isButtonVisible: boolean = true;
   blockedDates: string[] = ['2025-02-10', '2025-02-15', '2025-02-20'];
 
+  terraceId: number = 1;
+  currentIndex = 0;
+
+
   filtrarFechas = (date: Date | null): boolean => {
     if (!date) return false;
     const today = new Date();
@@ -35,54 +44,82 @@ export class ShowComponent implements AfterViewInit {
     return !this.blockedDates.includes(dateString);
   };
 
-  terrace:any;
-  slides = [
+  terrace: any = {} 
+  slides = []
+  id!: string;
+
+  constructor(
+    private metaService: MetatagsService,
+    private api: ApiService,
+    private sanitizer: DomSanitizer,
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef) {
+      
+    this.id = this.route.snapshot.paramMap.get('id')!;
+    console.log(this.id)
+      
+    this.api.get('terraices/' + this.id).subscribe((res: any) => {
+      console.log('resp: ', res)
+      this.terrace = res
+            
+      this.slides = this.terrace.images.map((img: string) =>
+        this.sanitizer.bypassSecurityTrustUrl(img.replace(/["\n]/g, ''))
+      );
     
-  ]
-  constructor(private cdr: ChangeDetectorRef) { }
-  
-  ngOnInit(): void {
-    this.initMap();
-     
-    this.terrace = {
-      id: "12345",
-      title: "Terraza con vista al mar",
-      photos: [
-        "https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "https://images.unsplash.com/photo-1613685302957-3a6fc45346ef?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-        "https://images.unsplash.com/photo-1580469322701-45b34d5e6e9b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-      ],
-      description: "Hermosa terraza con vista al mar, ideal para eventos privados.",
-      capacity: 50,
-      hours: 12,
-      location: {
-        address: "Calle Principal 123",
-        city: "Barcelona",
-        country: "España",
-        latitude: 40.4167,
-        longitude: -3.7033
-      },
-      amenities: ["wifi", "parrilla", "bar"],
-      isAvailable: true,
-      rating: 4.5,
-      reviews: [
-        { rating: 4, comment: 'Comentario 1' },
-        { rating: 5, comment: 'Comentario 2' }
-      ],
-      pricing: [
-        {
-          weekdays: 1700,
-          weekends: 2000,
-        }
-      ]
-    };
-
-      this.slides =  this.terrace.photos;
-
+    
+    })
     
   }
- 
   
+  ngOnInit(): void {
+
+    this.route.params.subscribe(params => {
+    this.id = params['id'];
+    console.log('ID actualizado:', this.id);
+  });
+  
+    this.initMap();
+
+
+
+
+
+    // this.terrace = {
+    //   id: "12345",
+    //   name: "Terraza con vista al mar",
+    //   photos: [
+    //     "https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    //     "https://images.unsplash.com/photo-1613685302957-3a6fc45346ef?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    //     "https://images.unsplash.com/photo-1580469322701-45b34d5e6e9b?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+    //   ],
+    //   description: "Hermosa terraza con vista al mar, ideal para eventos privados.",
+    //   capacity: 50,
+    //   hours: 12,
+    //   location: {
+    //     address: "Calle Principal 123",
+    //     city: "Barcelona",
+    //     country: "España",
+    //     latitude: 40.4167,
+    //     longitude: -3.7033
+    //   },
+    //   amenities: ["wifi", "parrilla", "bar"],
+    //   isAvailable: true,
+    //   rating: 4.5,
+    //   reviews: [
+    //     { rating: 4, comment: 'Comentario 1' },
+    //     { rating: 5, comment: 'Comentario 2' }
+    //   ],
+    //   pricing: [
+    //     {
+    //       weekdays: 1700,
+    //       weekends: 2000,
+    //     }
+    //   ]
+    // };    
+    
+    this.addMetaTags();
+  }
+ 
     ngAfterViewInit() {
     const observer = new IntersectionObserver(([entry]) => {
       this.isButtonVisible = entry.isIntersecting; 
@@ -91,7 +128,6 @@ export class ShowComponent implements AfterViewInit {
 
     observer.observe(this.originalButton.nativeElement);
     }
-  
   
   shareOnWhatsApp() {
     const url = encodeURIComponent(window.location.href);
@@ -108,7 +144,6 @@ export class ShowComponent implements AfterViewInit {
     window.open(`https://twitter.com/intent/tweet?url=${url}`, '_blank');
   }
 
-  
   shareLink() {
     if (navigator.share) {
       navigator.share({
@@ -123,7 +158,6 @@ export class ShowComponent implements AfterViewInit {
     }
   }
 
-  
    initMap(): void {
     this.map = L.map('map', {
       center: [
@@ -136,11 +170,6 @@ export class ShowComponent implements AfterViewInit {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(this.map);
    }
-  
-  terraceId: number = 1;
-
-  
-  currentIndex = 0;
 
   prevSlide() {
     this.currentIndex = (this.currentIndex > 0) ? this.currentIndex - 1 : this.slides.length - 1;
@@ -149,35 +178,56 @@ export class ShowComponent implements AfterViewInit {
   nextSlide() {
     this.currentIndex = (this.currentIndex < this.slides.length - 1) ? this.currentIndex + 1 : 0;
   }
- 
-  // terrace = {
-  //   id: 1,
-  //   name: 'Terraza 1',
-  //   description: 'Descripción de la terraza 1',
-  //   image: 'https://images.unsplash.com/photo-1600210492090-a159ffa3aeaf?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
-  //   price: 100,
-  //   location: 'Ubicación de la terraza 1',
-  //   capacity: 10,
-  //   available: true,
-  //   amenities: [
-  //     {
-  //       icon: 'fa-wifi',
-  //       name: 'Internet',
-  //     },
-  //     {
-  //       icon: 'fa-music',
-  //       name: 'Bocina',
-  //     },
-  //     {
-  //       icon: 'fa-utensils',
-  //       name: 'Cocina',
-  //     }
-  //   ],
-  //   reviews: [
-  //     { rating: 4, comment: 'Comentario 1' },
-  //     { rating: 5, comment: 'Comentario 2' }
-  //   ],
 
-  // }
+
+  addMetaTags() {
+    this.metaService.clearMetaTags();
+      this.metaService.addMetaTags([
+          { 
+            name: 'description', 
+            content: 'Descubre y renta las mejores terrazas para tus eventos. Encuentra espacios únicos al aire libre para fiestas, reuniones o celebraciones especiales. ¡Reserva ahora!' 
+          },
+          { 
+            name: 'keywords', 
+            content: 'Renta de terrazas, terrazas para eventos, espacios al aire libre, fiestas en terraza, renta de espacios, terrazas exclusivas, eventos especiales' 
+          },
+          { 
+            property: 'og:title', 
+            content:  '  | Encuentra el Espacio Perfecto para tu Evento' 
+          },
+          { 
+            property: 'og:description', 
+            content: 'Explora nuestra plataforma y renta las terrazas más exclusivas para tus eventos. Ideal para fiestas, reuniones y celebraciones al aire libre. ¡Reserva hoy mismo!' 
+          },
+          { 
+            property: 'og:image', 
+            content: 'https://example.com/images/renta-terrazas-social.jpg' 
+          },
+          { 
+            property: 'og:url', 
+            content: 'https://www.tuplataforma.com' 
+          },
+          { 
+            property: 'og:type', 
+            content: 'website' 
+          },
+          { 
+            name: 'twitter:card', 
+            content: 'summary_large_image' 
+          },
+          { 
+            name: 'twitter:title', 
+            content: 'Renta de Terrazas | Encuentra el Espacio Perfecto para tu Evento' 
+          },
+          { 
+            name: 'twitter:description', 
+            content: 'Descubre y renta las mejores terrazas para tus eventos. Espacios únicos al aire libre para fiestas, reuniones o celebraciones especiales. ¡Reserva ahora!' 
+          },
+          { 
+            name: 'twitter:image', 
+            content: 'https://example.com/images/renta-terrazas-social.jpg' 
+          }
+      ]);
+  }
 
 }
